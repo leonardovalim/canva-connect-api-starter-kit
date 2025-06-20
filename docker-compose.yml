@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  app:
+    image: node:20.14
+    working_dir: /usr/src/app
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./demos/ecommerce_shop/.env
+    environment:
+      NODE_ENV: development
+    command: sh -c "cd demos/ecommerce_shop && npm install && npm start"
